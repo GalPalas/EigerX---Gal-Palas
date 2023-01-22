@@ -1,0 +1,24 @@
+	// Example data.
+  let products=['rice', 'sugar', 'wheat', 'cheese'];
+	let productPrices=[16.89, 56.92, 20.89, 345.99];
+	let productSold=['rice', 'cheese'];
+	let soldPrice=[18.99, 400.89];
+  
+  // This function returns the number of incorrectly entered sales prices.
+  const priceCheck = (products, productsPrices, productsSold, soldPrice) => {
+    let hash = {};
+    let count = 0;
+
+    // iterate over products array and map the prices
+    for(let i=0; i < products.length; i++)
+      if(!hash[products[i]]) hash[products[i]] = productsPrices[i]
+    
+    // iterate over productsSold array and check if the prices match. 
+    for(let j=0; j < productsSold.length; j++)
+        if(hash[productsSold[j]] !== soldPrice[j])
+            count++;
+
+    return count; //return how many errors
+}
+const result = priceCheck(products,productPrices,productSold,soldPrice);
+console.log(result);
